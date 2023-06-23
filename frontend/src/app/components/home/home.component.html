@@ -1,0 +1,62 @@
+<div class="dark:bg-gray-700">
+	<app-navbar></app-navbar>
+	<div class="flex justify-center mt-2 gap-2 dark:text-white">
+		<div class="p-3 bg-cyan-300 rounded-lg dark:bg-cyan-600 max-[768px]:p-2 max-[768px]:text-sm max-[640px]:p-1 max-[640px]:rounded-md">My Question</div>
+		<div class="p-3 bg-green-300 rounded-lg dark:bg-green-600 max-[768px]:p-2 max-[768px]:text-sm max-[640px]:p-1 max-[640px]:rounded-md">True Answer</div>
+		<div class="p-3 bg-red-300 rounded-lg dark:bg-red-600 max-[768px]:p-2 max-[768px]:text-sm max-[640px]:p-1 max-[640px]:rounded-md">False Answer</div>
+	</div>
+	<div class="justify-center mt-6">
+		<div *ngFor="let d of data; let i = index" class="rounded-lg bg-gray-100 mx-10 mt-5 text-center border border-gray-300 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 dark:border-gray-900 max-[1024px]:mx-8 max-[1024px]:mt-4 max-[768px]:mx-6 max-[768px]:mt-3 max-[640px]:mx-4 max-[640px]:mt-2">
+			<div class="border-b-2 border-neutral-100 font-nu text-lg px-6 py-3 dark:border-neutral-600 dark:text-neutral-50 max-[1024px]:px-5 max-[1024px]:py-3 max-[768px]:px-4 max-[768px]:py-2 max-[768px]:text-md max-[640px]:px-3 max-[640px]:py-1">
+				{{d.question}}
+			</div>
+			<div class="p-6 flex justify-left max-[1024px]:p-4 max-[768px]:p-2 max-[640px]:p-1">
+				<div class="mb-3 text-base text-neutral-600 dark:text-neutral-200">
+					<ul class="max-[768px]:text-sm" *ngFor="let a of d.answers; index as i">
+						<li class="font-me"><b>{{i + 1}})</b> {{a?.text}}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="p-6 flex justify-between max-[1024px]:p-5 max-[768px]:p-4 max-[640px]:p-3 max-[768px]:flex-row">
+				<select #options class="w-2/6 rounded-lg bg-gray-200 font-nu border border-gray-500 dark:bg-neutral-500 dark:text-white max-[1024px]:rounded-md max-[768px]:text-sm max-[640px]:rounded-sm max-[640px]:text-xs">
+					<option value="null">Select Option</option>
+					<option [value]="d.answers[0].is_correct">A</option>
+					<option [value]="d.answers[1].is_correct">B</option>
+					<option [value]="d.answers[2].is_correct">C</option>
+					<option [value]="d.answers[3].is_correct">D</option>
+				</select>
+				<button
+				type="button"
+				(click)="optionsFunc(d._id, options)"
+				class="inline-block rounded font-nu w-2/6 bg-primary px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] max-[1024px]:px-5 max-[1024px]:pb-1.5 max-[1024px]:pt-2 max-[768px]:text-xs max-[768px]:px-4 max-[768px]:pb-1 max-[768px]:pt-1.5"
+				data-te-ripple-init
+				data-te-ripple-color="light">
+					Submit
+				</button>
+			</div>
+			<div class="border-t-2 flex w-full flex-col lg:flex-row justify-start rounded-b-lg items-center border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-white mx-auto lg:px-5 lg:py-2 md:px-4 md:py-1 sm:px-2 sm:py-0" [ngClass]="{'bg-green-300': d.correctAnswer.includes(isUser), 'bg-red-300': d.wrongAnswer.includes(isUser), 'bg-cyan-300': isUser == d.user._id, 'dark:bg-green-600': d.correctAnswer.includes(isUser), 'dark:bg-red-600': d.wrongAnswer.includes(isUser), 'dark:bg-cyan-600': isUser == d.user._id, 'bg-neutral-200': !d.correctAnswer.includes(isUser) && !d.wrongAnswer.includes(isUser) && isUser !== d.user._id, 'dark:bg-neutral-600': !d.correctAnswer.includes(isUser) && !d.wrongAnswer.includes(isUser) && isUser !== d.user._id}">
+				<div class="flex gap-3">
+					<div class="flex">
+            Author:&nbsp;<b class="cursor-pointer hover:underline" (click)="infoUser(d.user._id)">{{ isUser == d?.user?._id ? 'My' : d.user.email }}</b>
+					</div>
+					<div class="flex gap-1">
+						<span class="material-symbols-outlined">
+							history_toggle_off
+						</span>
+						<h3 class="text-center italic">
+							{{d.createdAt | date:'fullDate'}}
+						</h3>
+					</div>
+				</div>
+				<button type="button" (click)="infoQuestion(d._id)" class="text-gray-900 items-center flex gap-1 bg-gray-200 border border-gray-500 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 lg:ml-auto sm:ml-0 lg:mt-0 sm:mt-2">
+					<h3>Info</h3>
+					<span class="material-symbols-outlined text-base">
+						info
+					</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+</div>

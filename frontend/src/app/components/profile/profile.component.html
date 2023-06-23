@@ -1,0 +1,188 @@
+<div class="dark:bg-gray-700 dark:text-neutral-100">
+	<app-navbar></app-navbar>
+	<!--Tabs navigation-->
+	<ul class="mb-5 flex justify-center list-none flex-row flex-wrap border-b-0 pl-0"
+	role="tablist"
+	data-te-nav-ref>
+		<li role="presentation">
+			<a
+			href="#tabs-general"
+			class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400 max-[1024px]:px-6 max-[1024px]:pb-3 max-[1024px]:pt-3.5 max-[768px]:px-4.5 max-[768px]:pb-2.5 max-[768px]:pt-3 max-[640px]:px-3 max-[640px]:pb-2 max-[640px]:pt-2.5"
+			data-te-toggle="pill"
+			data-te-target="#tabs-general"
+			data-te-nav-active
+			role="tab"
+			aria-controls="tabs-general"
+			aria-selected="true"
+			>
+				General
+				<span class="material-symbols-outlined text-base align-middle ml-1">settings</span>
+			</a>
+		</li>
+		<li role="presentation">
+			<a
+			href="#tabs-statistics"
+			class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400 max-[1024px]:px-6 max-[1024px]:pb-3 max-[1024px]:pt-3.5 max-[768px]:px-4.5 max-[768px]:pb-2.5 max-[768px]:pt-3 max-[640px]:px-3 max-[640px]:pb-2 max-[640px]:pt-2.5"
+			data-te-toggle="pill"
+			data-te-target="#tabs-statistics"
+			role="tab"
+			aria-controls="tabs-statistics"
+			aria-selected="false"
+			>
+				My Statistics
+				<span class="material-symbols-outlined text-base align-middle ml-1">
+					monitoring
+				</span>
+			</a>
+		</li>
+		<li role="presentation">
+			<a
+			href="#tabs-question"
+			class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400 max-[1024px]:px-6 max-[1024px]:pb-3 max-[1024px]:pt-3.5 max-[768px]:px-4.5 max-[768px]:pb-2.5 max-[768px]:pt-3 max-[640px]:px-3 max-[640px]:pb-2 max-[640px]:pt-2.5"
+			data-te-toggle="pill"
+			data-te-target="#tabs-question"
+			role="tab"
+			aria-controls="tabs-question"
+			aria-selected="false"
+			>
+				My Questions
+				<span class="material-symbols-outlined text-base align-middle ml-1">
+					database
+				</span>
+			</a>
+		</li>
+	</ul>
+	
+	<!--Tabs content-->
+	<div class="mb-5 mx-6 max-[768px]:mb-3.5 max-[768px]:mx-4 max-[640px]:mb-2.5 max-[640px]:mx-3">
+		<div
+		class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+		id="tabs-general"
+		role="tabpanel"
+		aria-labelledby="tabs-home-tab"
+		data-te-tab-active>
+			<div *ngFor="let mD of myData">
+				<div class="relative float-label-input">
+					<label class="mb-1 max-[768px]:text-sm">First Name: </label>
+					<input type="text" class="block w-full bg-gray-100 focus:outline-none focus:shadow-outline border border-gray-300 rounded-md py-3 px-3 block appearance-none leading-normal focus:border-blue-400 dark:bg-neutral-500 dark:border-gray-600 dark:text-gray-100 max-[768px]:py-1.5 max-[768px]:px-1.5 max-[640px]:py-1 max-[640px]:px-1 max-[640px]:text-sm" value="{{mD.firstName}}" readonly />
+				</div>
+				
+				<div class="relative float-label-input my-3">
+					<label class="mb-1 max-[768px]:text-sm">Last Name: </label>
+					<input type="text" class="block w-full bg-gray-100 focus:outline-none focus:shadow-outline border border-gray-300 rounded-md py-3 px-3 block appearance-none leading-normal focus:border-blue-400 dark:bg-neutral-500 dark:border-gray-600 dark:text-gray-100 max-[768px]:py-1.5 max-[768px]:px-1.5 max-[640px]:py-1 max-[640px]:px-1 max-[640px]:text-sm" value="{{mD.lastName}}" readonly />
+				</div>
+				
+				<div class="relative float-label-input">
+					<label class="mb-1 max-[768px]:text-sm">Email: </label>
+					<input type="text" class="block w-full bg-gray-100 focus:outline-none focus:shadow-outline border border-gray-300 rounded-md py-3 px-3 block appearance-none leading-normal focus:border-blue-400 dark:bg-neutral-500 dark:border-gray-600 dark:text-gray-100 max-[768px]:py-1.5 max-[768px]:px-1.5 max-[640px]:py-1 max-[640px]:px-1 max-[640px]:text-sm" value="{{mD.email}}" readonly />
+				</div>
+			</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+		</div>
+		<div
+		class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+		id="tabs-statistics"
+		role="tabpanel"
+		aria-labelledby="tabs-profile-tab">
+			<!-- table -->
+			<div *ngIf="trueAnswer || falseAnswer" class="flex flex-col">
+				<h1 class="mb-1 max-[640px]:text-sm">A Complete List Of The Questions You Answered In This Section</h1>
+				<div class="overflow-x-auto sm:-mx-4 lg:-mx-6">
+					<div class="inline-block min-w-full py-2 sm:px-4 lg:px-6">
+						<div class="overflow-hidden rounded-lg">
+							<table class="min-w-full text-center text-md font-light max-[768px]:text-base max-[640px]:text-xs">
+								<thead class="border-b bg-neutral-200 dark:border-neutral-500 dark:bg-gray-800">
+									<tr>
+										<th scope="col" class="px-6 py-4 max-[1024px]:px-5 max-[768px]:px-4 max-[640px]:px-3 max-[1024px]:py-3 max-[768px]:py-2 max-[640px]:py-1">#</th>
+										<th scope="col" class="px-6 py-4 max-[1024px]:px-5 max-[768px]:px-4 max-[640px]:px-3 max-[1024px]:py-3 max-[768px]:py-2 max-[640px]:py-1">Question Name</th>
+										<th scope="col" class="px-6 py-4 max-[1024px]:px-5 max-[768px]:px-4 max-[640px]:px-3 max-[1024px]:py-3 max-[768px]:py-2 max-[640px]:py-1">Answers</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let mA of myAnswers; index as i" [ngClass]="{'bg-red-400': mA.is_correct === false, 'bg-green-400': mA.is_correct === true}" class="border-b">
+										<td class="whitespace-nowrap px-6 py-4 font-medium max-[1024px]:px-5 max-[768px]:px-4 max-[640px]:px-3 max-[1024px]:py-3 max-[768px]:py-2 max-[640px]:py-1">{{i + 1}}</td>
+										<td class="whitespace-nowrap px-6 py-4 max-[1024px]:px-5 max-[768px]:px-4 max-[640px]:px-3 max-[1024px]:py-3 max-[768px]:py-2 max-[640px]:py-1">
+											{{ (mA.question.question.length > 20) ? (mA.question.question | slice:0:20) + '...' : (mA.question.question) }}
+										</td>
+										<td class="whitespace-nowrap px-6 py-4 max-[1024px]:px-5 max-[768px]:px-4 max-[640px]:px-3 max-[1024px]:py-3 max-[768px]:py-2 max-[640px]:py-1">
+											{{mA.is_correct}}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex justify-center">
+				<div class="w-96">
+					<canvas id="myChart" width="700" height="250" #mychart></canvas>
+				</div>
+			</div>
+			<div *ngIf="!trueAnswer && !falseAnswer">
+				<h1 class="text-xl">You Have Not Answered Any Questions</h1>
+			</div>
+		</div>
+		<div
+		class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+		id="tabs-question"
+		role="tabpanel"
+		aria-labelledby="tabs-profile-tab">
+			<div *ngIf="myQuestions.length !== 0" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+				<h1 class="mb-1 max-[640px]:text-sm">A Complete List Of Who Answered Your Questions In This Section</h1>
+				
+				<fieldset class="border rounded-lg border-gray-300 my-2 p-3 max-[768px]:my-1.5 max-[768px]:p-2 max-[640px]:my-1 max-[640px]:p-1" *ngFor="let mQ of myQuestions; index as i">
+					<legend class="max-[768px]:text-base max-[640px]:text-sm">
+						{{ i + 1 }})
+						{{ (mQ.question.length > 20) ? (mQ.question | slice:0:20) + '...' : (mQ.question) }}
+					</legend>
+					<div class="flex justify-center flex-wrap gap-5 max-[1024px]:gap-4 max-[768px]:gap-3 max-[640px]:gap-2">
+						<div *ngIf="mQ.correctAnswer.length !== 0" class="border-2 border-green-500 p-3 rounded-md text-center max-[768px]:rounded-base max-[768px]:p-2 max-[640px]:border max-[640px]:p-1">
+							<h3 class="max-[768px]:text-base max-[640px]:text-sm">
+								Correct Answers
+								<span
+								class="inline-block whitespace-nowrap rounded-[0.27rem] bg-primary-400 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700"
+								>
+									{{(mQ.correctAnswer.length)}}
+								</span>
+							</h3>
+							<hr class="mb-1" />
+							<h4 class="max-[768px]:text-base max-[640px]:text-sm" *ngFor="let cAnswer of mQ.correctAnswer">
+								{{cAnswer.email}}
+							</h4>
+						</div>
+						<div *ngIf="mQ.wrongAnswer.length !== 0" class="border-2 border-red-500 p-3 rounded-md text-center max-[768px]:rounded-base max-[768px]:p-2 max-[640px]:border max-[640px]:p-1">
+							<h3 class="max-[768px]:text-base max-[640px]:text-sm">
+								Wrong Answers
+								<span
+								class="inline-block whitespace-nowrap rounded-[0.27rem] bg-primary-400 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700"
+								>
+									{{(mQ.wrongAnswer.length)}}
+								</span>
+							</h3>
+							<hr class="mb-1" />
+							<h3 class="max-[768px]:text-base max-[640px]:text-sm" *ngFor="let wAnswer of mQ.wrongAnswer">
+								{{wAnswer.email}}
+							</h3>
+						</div>
+					</div>
+					<h4 class="flex mt-0.5 justify-end max-[768px]:text-base max-[640px]:text-sm">
+						{{mQ.createdAt | date:'fullDate'}}
+					</h4>
+				</fieldset>
+				
+			</div>
+			<div *ngIf="myQuestions.length == 0">
+				<h1 class="text-xl">You Have Not Created Any Questions</h1>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<br />
+</div>	

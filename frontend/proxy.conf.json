@@ -1,0 +1,7 @@
+{
+	"/api/*": {
+		"target": "https://questions-app-server.vercel.app",
+		"secure": false,
+		"logLevel": "debug"
+	}
+}

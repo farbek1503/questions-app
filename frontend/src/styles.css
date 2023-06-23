@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400&family=Nunito:wght@400&family=Roboto&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	font-family: 'Roboto', sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
